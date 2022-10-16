@@ -1,1 +1,0 @@
-D:\III.ev\I.felev\quiz\build\classes\kotlin\main\Item.class;D:\III.ev\I.felev\quiz\build\classes\kotlin\main\ItemController.class;D:\III.ev\I.felev\quiz\build\classes\kotlin\main\ItemRepository.class;D:\III.ev\I.felev\quiz\build\classes\kotlin\main\ItemService.class;D:\III.ev\I.felev\quiz\build\classes\kotlin\main\MainKt.class

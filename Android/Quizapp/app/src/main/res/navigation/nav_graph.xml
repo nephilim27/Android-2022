@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/quizStartFragment2">
+    <fragment
+        android:id="@+id/quizStartFragment2"
+        android:name="ui.QuizStartFragment"
+        android:label="fragment_quiz_start"
+        tools:layout="@layout/fragment_quiz_start"
+        app:defaultNavHost="true">
+        <action
+            android:id="@+id/action_quizStartFragment2_to_questionFragment2"
+            app:destination="@id/questionFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment2"
+        android:name="ui.QuestionFragment"
+        android:label="fragment_question"
+        tools:layout="@layout/fragment_question" >
+        <action
+            android:id="@+id/action_questionFragment2_self"
+            app:destination="@id/questionFragment2" />
+        <action
+            android:id="@+id/action_questionFragment2_to_quizEndFragment2"
+            app:destination="@id/quizEndFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizEndFragment2"
+        android:name="ui.QuizEndFragment"
+        android:label="fragment_quiz_end"
+        tools:layout="@layout/fragment_quiz_end" >
+        <action
+            android:id="@+id/action_quizEndFragment2_to_quizStartFragment2"
+            app:destination="@id/quizStartFragment2" />
+    </fragment>
+</navigation>

@@ -10,32 +10,32 @@ class MainActivity : AppCompatActivity() {
 
     val TAG = "MainActivity"
 
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
         Log.i(TAG, "onStart() called.")
     }
 
-    override fun onResume(){
+    override fun onResume() {
         super.onResume()
         Log.i(TAG, "onResume() called.")
     }
 
-    override fun onRestart(){
+    override fun onRestart() {
         super.onRestart()
         Log.i(TAG, "onRestart() called.")
     }
 
-    override fun onPause(){
+    override fun onPause() {
         super.onPause()
         Log.i(TAG, "onPause() called.")
     }
 
-    override fun onStop(){
+    override fun onStop() {
         super.onStop()
         Log.i(TAG, "onStop() called.")
     }
 
-    override fun onDestroy(){
+    override fun onDestroy() {
         super.onDestroy()
         Log.i(TAG, "onDestroy() called.")
     }
@@ -45,3 +45,4 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.i(TAG, "onCreate() called.")
     }
+}

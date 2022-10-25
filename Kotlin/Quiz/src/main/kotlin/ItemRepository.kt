@@ -8,12 +8,12 @@ open class ItemRepository {
         var i = 0
 
         while(i < lines.size){
-           // val answerNumber = lines[i++].toInt()
+            val answerNumber = lines[i++].toInt()
             val question: String = lines[i++]
             val correct: Int = lines[i++].toInt()
 
             val answers = mutableListOf<String>()
-            repeat(4){
+            repeat(answerNumber){
                 answers.add(lines[i++])
             }
             val item = Item(question, answers, correct)

@@ -1,63 +1,67 @@
-When did Elizabeth II die?
-3
-1988
-2003
-2022
-1999
+4
 Who developed Kotlin?
 1
 JetBrains
 Google
 Microsoft
 Oracle
+4
 Which extension is responsible to save Kotlin files?
 1
 .kt or .kts
 .android
 .kot
 .src
+4
 How to do a multi-line comment in Kotlin language?
 1
 /* */
 //
 \\
 %
+4
 The two types of constructors in Kotlin are?
 1
 Primary and secondary constructor
 First and second constructor
 Constant and Parameterized constructor
 None of these
+4
 What handles null exception in Kotlin?
 1
 Elvis operator
 The Kotlin extension
 Lambda functions
 Sealed classes
+4
 The correct function to get the length of a string in Kotlin is?
 1
 str.length
 lengthof(str)
 string(length)
 length(str)
+4
 In Kotlin the default visibility operator is?
 1
 public
 protected
 sealed
 private
+4
 What defines sealed class in Kotlin?
 1
 It represents restricted class hierarchies
 It's another name for abstract class
 It is used in every Kotlin program
 None of these
+4
 The functions in Kotlin can be divided in how many types?
 1
 2
 3
 4
 5
+4
 Which are the basic data types in Kotlin?
 4
 Arrays and Booleans

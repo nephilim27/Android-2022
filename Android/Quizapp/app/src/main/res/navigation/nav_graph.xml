@@ -6,7 +6,7 @@
     app:startDestination="@id/quizStartFragment2">
     <fragment
         android:id="@+id/quizStartFragment2"
-        android:name="ui.QuizStartFragment"
+        android:name="com.example.quizapp.ui.QuizStartFragment"
         android:label="fragment_quiz_start"
         tools:layout="@layout/fragment_quiz_start"
         app:defaultNavHost="true">
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/questionFragment2"
-        android:name="ui.QuestionFragment"
+        android:name="com.example.quizapp.ui.QuestionFragment"
         android:label="fragment_question"
         tools:layout="@layout/fragment_question" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/quizEndFragment2"
-        android:name="ui.QuizEndFragment"
+        android:name="com.example.quizapp.ui.QuizEndFragment"
         android:label="fragment_quiz_end"
         tools:layout="@layout/fragment_quiz_end" >
         <action

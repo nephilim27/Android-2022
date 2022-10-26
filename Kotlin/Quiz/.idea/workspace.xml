@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35bcfd9c-c5df-43d6-8b1e-d002acf1aefb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/java/com/example/quizapp/models/Item.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Quizapp/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/java/ui/QuestionFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/java/com/example/quizapp/ui/QuestionFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/java/ui/QuizEndFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/java/com/example/quizapp/ui/QuizEndFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/java/ui/QuizStartFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/java/com/example/quizapp/ui/QuizStartFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/layout/fragment_question.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/layout/fragment_question.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/layout/fragment_quiz_end.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/layout/fragment_quiz_end.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/layout/fragment_quiz_start.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/layout/fragment_quiz_start.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Quizapp/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ItemController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ItemController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ItemRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ItemRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ItemService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ItemService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/questions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/questions.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +84,8 @@
       <option name="presentableId" value="Default" />
       <updated>1665949474439</updated>
       <workItem from="1665949475801" duration="328000" />
-      <workItem from="1666706727046" duration="3991000" />
+      <workItem from="1666706727046" duration="4053000" />
+      <workItem from="1666714823883" duration="478000" />
     </task>
     <servers />
   </component>

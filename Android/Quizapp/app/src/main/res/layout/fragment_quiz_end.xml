@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.843" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/endText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="QUIZ RESULT"
@@ -31,15 +31,16 @@
         app:layout_constraintVertical_bias="0.143" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" /  POINTS "
-        android:textSize="24sp"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/endButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/endText"
         app:layout_constraintVertical_bias="0.231" />
 </androidx.constraintlayout.widget.ConstraintLayout>

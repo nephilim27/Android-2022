@@ -14,14 +14,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentQuestionBinding
-import com.example.quizapp.databinding.FragmentQuizStartBinding
-import com.example.quizapp.models.item
-import com.example.quizapp.models.quizViewModel
+import com.example.quizapp.models.QuizViewModel
 
 
 class QuestionFragment : Fragment() {
     private lateinit var binding: FragmentQuestionBinding
-    private lateinit var viewModel: quizViewModel
+    private lateinit var viewModel: QuizViewModel
     private lateinit var questionText: TextView
     private lateinit var nextButton: Button
     private lateinit var radioGroup: RadioGroup
@@ -33,7 +31,7 @@ class QuestionFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity())[quizViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[QuizViewModel::class.java]
         binding = FragmentQuestionBinding.inflate(layoutInflater)
         initializeViews()
         initializeListeners()
@@ -43,10 +41,10 @@ class QuestionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(requireActivity())[quizViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[QuizViewModel::class.java]
         binding = FragmentQuestionBinding.inflate(inflater, container, false)
         viewModel.currentQuestion.observe(requireActivity()){(item, isLast)->
-            binding.textView.text = item?.question
+            binding.questionText.text = item?.question
             binding.radioButton.text = item?.answers?.get(0)
             binding.radioButton2.text = item?.answers?.get(1)
             binding.radioButton3.text = item?.answers?.get(2)
@@ -75,8 +73,8 @@ class QuestionFragment : Fragment() {
         initializeListeners()
     }
     fun initializeViews(){
-        questionText = binding.textView
-        nextButton = binding.button2
+        questionText = binding.questionText
+        nextButton = binding.nextButton
         radioGroup = binding.radioGroup
         radioButton1 = binding.radioButton
         radioButton2 = binding.radioButton2

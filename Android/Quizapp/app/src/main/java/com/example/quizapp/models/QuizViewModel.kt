@@ -4,7 +4,7 @@ package com.example.quizapp.models
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class quizViewModel : ViewModel() {
+class QuizViewModel : ViewModel() {
     private val nrOfQuestions = 5
     private var questions = selectRandomItems(nrOfQuestions)
     var currentQuestion: MutableLiveData<Pair<Item?, Boolean>> = MutableLiveData<Pair<Item?, Boolean>>()

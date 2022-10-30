@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/home"/>
+    <item android:title="@string/QuizTime"
+        android:icon="@drawable/ic_baseline_quiz_24"
+        android:id="@+id/quizTime"/>
+    <item android:title="@string/Profile"
+        android:icon="@drawable/ic_baseline_profile_24"
+        android:id="@+id/profile"/>
+    <item android:title="@string/ListOfQuestions"
+        android:icon="@drawable/ic_baseline_question_list_24"
+        android:id="@+id/listOfQuestions"/>
+    <item android:title="@string/NewQuestion"
+        android:icon="@drawable/ic_baseline_add_question_24"
+        android:id="@+id/newQuestion"/>
+</menu>

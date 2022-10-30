@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/quizStartFragment2">
+    app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/quizStartFragment2"
         android:name="com.example.quizapp.ui.QuizStartFragment"
@@ -30,9 +30,30 @@
         android:id="@+id/quizEndFragment2"
         android:name="com.example.quizapp.ui.QuizEndFragment"
         android:label="fragment_quiz_end"
-        tools:layout="@layout/fragment_quiz_end" >
+        tools:layout="@layout/fragment_quiz_end" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.quizapp.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_quizEndFragment2_to_quizStartFragment2"
+            android:id="@+id/action_homeFragment_to_quizStartFragment2"
             app:destination="@id/quizStartFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_questionListFragment"
+            app:destination="@id/questionListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_questionAddFragment"
+            app:destination="@id/questionAddFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/questionListFragment"
+        android:name="com.example.quizapp.ui.QuestionListFragment"
+        android:label="fragment_question_list"
+        tools:layout="@layout/fragment_question_list" />
+    <fragment
+        android:id="@+id/questionAddFragment"
+        android:name="com.example.quizapp.ui.QuestionAddFragment"
+        android:label="fragment_question_add"
+        tools:layout="@layout/fragment_question_add" />
 </navigation>

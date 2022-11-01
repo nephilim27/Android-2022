@@ -8,8 +8,7 @@
         android:id="@+id/quizStartFragment2"
         android:name="com.example.quizapp.ui.QuizStartFragment"
         android:label="fragment_quiz_start"
-        tools:layout="@layout/fragment_quiz_start"
-        app:defaultNavHost="true">
+        tools:layout="@layout/fragment_quiz_start">
         <action
             android:id="@+id/action_quizStartFragment2_to_questionFragment2"
             app:destination="@id/questionFragment2" />
@@ -35,7 +34,9 @@
         android:id="@+id/homeFragment"
         android:name="com.example.quizapp.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph">
         <action
             android:id="@+id/action_homeFragment_to_quizStartFragment2"
             app:destination="@id/quizStartFragment2" />

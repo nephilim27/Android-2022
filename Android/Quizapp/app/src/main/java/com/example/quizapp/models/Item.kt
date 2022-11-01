@@ -58,5 +58,4 @@ val item: MutableList<Item> = mutableListOf(
         answers = mutableListOf("Arrays and Booleans", "Characters", "Strings and Numbers", "All of these"),
         correct = 4
     )
-
 )

@@ -25,7 +25,7 @@ class QuizStartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(requireActivity()).get(QuizViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity())[QuizViewModel::class.java]
         binding = FragmentQuizStartBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -33,7 +33,7 @@ class QuizStartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.apply {
-            initViewItems(this)
+            initViewItems()
             registerListeners(view)
         }
     }
@@ -53,7 +53,7 @@ class QuizStartFragment : Fragment() {
 
     }
 
-    private fun initViewItems(view: View) {
+    private fun initViewItems() {
         userName = binding.userName
         startButton = binding.startButton
     }

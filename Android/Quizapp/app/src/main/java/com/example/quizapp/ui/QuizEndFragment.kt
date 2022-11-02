@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentQuizEndBinding
 import com.example.quizapp.models.QuizViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -43,12 +44,15 @@ class QuizEndFragment : Fragment() {
         endText = binding.endText
         endText.setText("\tQUIZ RESULT \n Congratulations!")
         tryAgainButton.setOnClickListener {
-            val snack = Snackbar.make(view, "Could not implement this one yet", Snackbar.LENGTH_SHORT)
-            snack.show()
+            replaceFragment(QuizStartFragment())
         }
+    }
 
-
-
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.commit()
     }
 
 }

@@ -60,7 +60,7 @@ class QuestionFragment : Fragment() {
 
                     viewModel.checkAnswer(checked+1)
                     binding.radioGroup.clearCheck()
-                    findNavController().navigate(R.id.action_questionFragment2_to_quizEndFragment2)
+                    replaceFragment(QuizEndFragment())
                 }
             }
         }
@@ -113,5 +113,12 @@ class QuestionFragment : Fragment() {
             binding.radioGroup.clearCheck()
             viewModel.getNextQuestion()
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.commit()
     }
 }

@@ -47,7 +47,7 @@ class QuizStartFragment : Fragment() {
                 snack.show()
             }
             else {
-                findNavController().navigate(R.id.action_quizStartFragment2_to_questionFragment2)
+                replaceFragment(QuestionFragment())
             }
         }
 
@@ -56,5 +56,12 @@ class QuizStartFragment : Fragment() {
     private fun initViewItems() {
         userName = binding.userName
         startButton = binding.startButton
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.commit()
     }
 }

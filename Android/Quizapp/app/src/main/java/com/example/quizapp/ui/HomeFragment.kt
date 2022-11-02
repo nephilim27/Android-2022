@@ -43,15 +43,15 @@ class HomeFragment : Fragment() {
         createQuestion = binding.createQuestionButton
 
         testSkill.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_quizStartFragment2)
+            replaceFragment(QuizStartFragment())
         }
 
         readQuestion.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_questionListFragment)
+            replaceFragment(QuestionListFragment())
         }
 
         createQuestion.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_questionAddFragment)
+            replaceFragment(QuestionAddFragment())
         }
     }
 
@@ -59,6 +59,13 @@ class HomeFragment : Fragment() {
         testSkill = binding.testSkillsButton
         readQuestion = binding.readQuestionsButton
         createQuestion = binding.createQuestionButton
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.commit()
     }
 }
 

@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.quizapp.ItemList
 import com.example.quizapp.R
+import com.example.quizapp.itemList
 
 
 // Item event handling
@@ -16,8 +17,8 @@ interface OnItemClickListener{
     fun onItemClick(position: Int)
 }
 
-class DataAdapter (
-    private val list: List<Item>,
+class DataAdapter(
+    private val list: MutableList<ItemList> = itemList,
     private val listener: OnItemClickListener
 ):  RecyclerView.Adapter<DataAdapter.DataViewHolder>(){
 

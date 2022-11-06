@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.quizTime -> replaceFragment(QuizStartFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
-                //R.id.listOfQuestions -> replaceFragment(QuestionListFragment())
+                R.id.listOfQuestions -> replaceFragment(QuestionListFragment())
                 R.id.newQuestion -> replaceFragment(QuestionAddFragment())
 
                 else -> {

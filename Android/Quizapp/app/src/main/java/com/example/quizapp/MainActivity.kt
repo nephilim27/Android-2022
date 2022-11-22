@@ -1,19 +1,14 @@
 package com.example.quizapp
 
-import android.content.ContentValues.TAG
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quizapp.databinding.ActivityMainBinding
-import com.example.quizapp.databinding.FragmentHomeBinding
-import com.example.quizapp.models.Item
-import com.example.quizapp.models.DataAdapter
 import com.example.quizapp.models.Question
 import com.example.quizapp.ui.*
+import com.google.android.material.snackbar.Snackbar
 
 
 @Suppress("UNUSED_EXPRESSION")
@@ -85,4 +80,6 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.commit()
     }
+
+
 }

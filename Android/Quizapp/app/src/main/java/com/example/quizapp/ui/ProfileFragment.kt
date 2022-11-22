@@ -1,5 +1,6 @@
 package com.example.quizapp.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,9 +16,9 @@ import com.example.quizapp.models.QuizViewModel
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var binding: FragmentProfileBinding
+    lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: QuizViewModel
-    private lateinit var playerName: TextView
+    lateinit var playerName: TextView
     private lateinit var playerNameText: TextView
     private lateinit var highScore: TextView
     private lateinit var highScoreText: TextView
@@ -32,7 +33,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.apply {
             initViewItems()
-            //registerListeners()
+            registerListeners()
         }
     }
 
@@ -45,7 +46,11 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    private fun registerListeners(){
+        playerNameText.text = viewModel.userName
+        highScoreText.text = viewModel.highscore.toString()
 
+    }
 
     private fun initViewItems(){
         playerName = binding.playerName

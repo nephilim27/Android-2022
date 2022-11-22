@@ -37,6 +37,9 @@ class QuizEndFragment : Fragment() {
         initListeners(view)
         scoreText = binding.scoreText
         scoreText.text = "${viewModel.getCorrectAnswers()} / ${viewModel.getNumberOfQuestions()} POINTS"
+        if (viewModel.highscore < viewModel.getCorrectAnswers()){
+            viewModel.highscore = viewModel.getCorrectAnswers()
+        }
     }
 
     private fun initListeners(view: View) {
@@ -44,6 +47,7 @@ class QuizEndFragment : Fragment() {
         endText = binding.endText
         endText.setText("\tQUIZ RESULT \n Congratulations!")
         tryAgainButton.setOnClickListener {
+            viewModel.resetQuiz()
             replaceFragment(QuizStartFragment())
         }
     }

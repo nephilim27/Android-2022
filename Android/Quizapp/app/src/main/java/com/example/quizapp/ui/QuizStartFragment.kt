@@ -1,6 +1,8 @@
 package com.example.quizapp.ui
 
+import android.content.Context
 import android.os.Bundle
+import android.provider.Settings.Global.putString
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +16,9 @@ import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentQuizStartBinding
 import com.example.quizapp.models.QuizViewModel
 import com.google.android.material.snackbar.Snackbar
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
+
 
 class QuizStartFragment : Fragment() {
     private lateinit var binding: FragmentQuizStartBinding
@@ -27,6 +32,7 @@ class QuizStartFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(requireActivity())[QuizViewModel::class.java]
         binding = FragmentQuizStartBinding.inflate(inflater, container, false)
+        viewModel.resetQuiz()
         return binding.root
     }
 
@@ -49,9 +55,10 @@ class QuizStartFragment : Fragment() {
             else {
                 replaceFragment(QuestionFragment())
             }
+            viewModel.userName = userName.text.toString()
         }
-
     }
+
 
     private fun initViewItems() {
         userName = binding.userName

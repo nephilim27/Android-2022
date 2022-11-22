@@ -1,5 +1,6 @@
 package com.example.quizapp.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,11 +11,13 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentQuestionBinding
 import com.example.quizapp.models.QuizViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class QuestionFragment : Fragment() {
@@ -121,4 +124,18 @@ class QuestionFragment : Fragment() {
         fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.commit()
     }
+
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        Log.d("QuestionFragment", "onAttach: ")
+//        val callback : OnBackPressedCallback = object : OnBackPressedCallback(true) {
+//            override fun handleOnBackPressed() {
+//                val snack = view?.let { Snackbar.make(it, "You can't go back, bitch!", Snackbar.LENGTH_SHORT) }
+//                if (snack != null) {
+//                    snack.show()
+//                }
+//            }
+//        }
+//        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+//    }
 }

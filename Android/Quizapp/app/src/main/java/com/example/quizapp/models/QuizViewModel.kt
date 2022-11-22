@@ -3,6 +3,8 @@ package com.example.quizapp.models
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.quizapp.ItemList
+import com.example.quizapp.itemList
 
 class QuizViewModel : ViewModel() {
     private val nrOfQuestions = 5
@@ -10,6 +12,11 @@ class QuizViewModel : ViewModel() {
     var currentQuestion: MutableLiveData<Pair<Item?, Boolean>> = MutableLiveData<Pair<Item?, Boolean>>()
     var questionIterator: MutableIterator<Item> = startQuiz().iterator()
     private var correctAnswers = 0
+    var items: MutableList<Item> = item
+    var itemlist: MutableList<ItemList> = itemList
+    var userName: String = " "
+    var highscore: Int = 0
+
 
     init {
         getNextQuestion()
@@ -35,6 +42,13 @@ class QuizViewModel : ViewModel() {
         return randomItems
     }
 
+    fun resetQuiz(){
+        correctAnswers = 0
+        questions = selectRandomItems(nrOfQuestions)
+        questionIterator = startQuiz().iterator()
+        currentQuestion.value = Pair(questionIterator.next(), false)
+    }
+
     fun getNextQuestion(){
         if (questionIterator.hasNext()){
             currentQuestion.value = questionIterator.next() to !questionIterator.hasNext()
@@ -58,5 +72,6 @@ class QuizViewModel : ViewModel() {
     fun startQuiz(): MutableList<Item>{
         return questions
     }
+
 }
 

@@ -1,5 +1,7 @@
 package com.example.quizapp.models
 
+import android.widget.EditText
+
 data class Item(val question: String, val answers: MutableList<String>, val correct: Int)
 
 val item: MutableList<Item> = mutableListOf(

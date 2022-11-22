@@ -5,56 +5,82 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.quizapp.R
+import android.widget.Button
+import android.widget.EditText
+import androidx.lifecycle.ViewModelProvider
+import com.example.quizapp.ItemList
+import com.example.quizapp.databinding.FragmentQuestionAddBinding
+import com.example.quizapp.models.Item
+import com.example.quizapp.models.QuizViewModel
+import kotlin.properties.Delegates
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [QuestionAddFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class QuestionAddFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var binding: FragmentQuestionAddBinding
+    private lateinit var placeHolder: EditText
+    private lateinit var correctAnswer: EditText
+    private lateinit var answer1: EditText
+    private lateinit var answer2: EditText
+    private lateinit var answer3: EditText
+    private lateinit var answer4: EditText
+    private lateinit var addButton: Button
+    private lateinit var viewModel: QuizViewModel
+
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        arguments?.let {
+//
+//        }
+//    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.apply {
+            initViewItems()
+            registerListeners(view)
         }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question_add, container, false)
+    ): View {
+        viewModel = ViewModelProvider(requireActivity())[QuizViewModel::class.java]
+        binding = FragmentQuestionAddBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment QuestionAddFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            QuestionAddFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun registerListeners(view: View){
+        addButton = binding.addQuestionButton
+        addButton.setOnClickListener {
+            viewModel.items.add(
+                Item(question = placeHolder.text.toString(), answers = mutableListOf(answer1.text.toString(),
+                    answer2.text.toString(), answer3.text.toString(), answer4.text.toString()),
+                    correct = correctAnswer.text.toString().toInt())
+            )
+
+            viewModel.itemlist.add(
+                ItemList(question = placeHolder.text.toString())
+            )
+
+            placeHolder.text.clear()
+            correctAnswer.text.clear()
+            answer1.text.clear()
+            answer2.text.clear()
+            answer3.text.clear()
+            answer4.text.clear()
+
+        }
+    }
+
+    private fun initViewItems() {
+        placeHolder = binding.placeholder
+        correctAnswer = binding.correctAnswer
+        answer1 = binding.answer1
+        answer2 = binding.answer2
+        answer3 = binding.answer3
+        answer4 = binding.answer4
+        addButton = binding.addQuestionButton
     }
 }

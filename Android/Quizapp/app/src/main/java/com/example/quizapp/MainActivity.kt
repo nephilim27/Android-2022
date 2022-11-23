@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var items: Array<String>
     val TAG = "MainActivity"
 
+
+
     override fun onStart() {
         super.onStart()
         Log.i(TAG, "onStart() called.")

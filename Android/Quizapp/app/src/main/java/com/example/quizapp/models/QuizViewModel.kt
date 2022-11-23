@@ -1,8 +1,10 @@
 package com.example.quizapp.models
 
 
+import android.widget.Button
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.quizapp.ItemList
 import com.example.quizapp.itemList
 
@@ -16,6 +18,7 @@ class QuizViewModel : ViewModel() {
     var itemlist: MutableList<ItemList> = itemList
     var userName: String = " "
     var highscore: Int = 0
+    var position = 0
 
 
     init {

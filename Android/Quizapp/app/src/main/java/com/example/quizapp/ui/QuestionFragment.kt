@@ -125,17 +125,17 @@ class QuestionFragment : Fragment() {
         fragmentTransaction.commit()
     }
 
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        Log.d("QuestionFragment", "onAttach: ")
-//        val callback : OnBackPressedCallback = object : OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-//                val snack = view?.let { Snackbar.make(it, "You can't go back, bitch!", Snackbar.LENGTH_SHORT) }
-//                if (snack != null) {
-//                    snack.show()
-//                }
-//            }
-//        }
-//        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-//    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.d("QuestionFragment", "onAttach: ")
+        val callback : OnBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val snack = view?.let { Snackbar.make(it, "You can't go back", Snackbar.LENGTH_SHORT) }
+                if (snack != null) {
+                    snack.show()
+                }
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
 }

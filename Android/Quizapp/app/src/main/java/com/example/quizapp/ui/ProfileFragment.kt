@@ -10,7 +10,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.quizapp.R
-import com.example.quizapp.databinding.FragmentHomeBinding
 import com.example.quizapp.databinding.FragmentProfileBinding
 import com.example.quizapp.models.QuizViewModel
 

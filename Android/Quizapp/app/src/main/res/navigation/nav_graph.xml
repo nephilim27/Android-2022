@@ -51,10 +51,19 @@
         android:id="@+id/questionListFragment"
         android:name="com.example.quizapp.ui.QuestionListFragment"
         android:label="fragment_question_list"
-        tools:layout="@layout/fragment_question_list" />
+        tools:layout="@layout/fragment_question_list" >
+        <action
+            android:id="@+id/action_questionListFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/questionAddFragment"
         android:name="com.example.quizapp.ui.QuestionAddFragment"
         android:label="fragment_question_add"
         tools:layout="@layout/fragment_question_add" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.quizapp.ui.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

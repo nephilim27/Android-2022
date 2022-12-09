@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.a3track.MyApplication
@@ -19,15 +20,19 @@ import com.example.a3track.model.LoginResult
 import com.example.a3track.repository.TrackerRepository
 import com.example.a3track.viewModel.LoginViewModel
 import com.example.a3track.viewModel.LoginViewModelFactory
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class LoginFragment : Fragment() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var editText1: EditText
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = LoginViewModelFactory(TrackerRepository())
         loginViewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
+        (activity as AppCompatActivity?)!!.findViewById<BottomNavigationView>(R.id.bottomNavigationView).visibility = View.GONE
     }
 
     override fun onCreateView(
@@ -80,8 +85,8 @@ class LoginFragment : Fragment() {
                 edit.putLong("deadline", MyApplication.deadline)
                 edit.putString("email", editText1.text.toString())
                 edit.apply()
-                Log.d("anyamPicsaja", "LofaszSEstifeny")
-                replaceFragment(UserListFragment())
+                Log.d("login", "Login")
+                replaceFragment(ActivitiesFragment())
             }
         }
 
@@ -90,7 +95,7 @@ class LoginFragment : Fragment() {
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = parentFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayoutMain, fragment)
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
     }
 }

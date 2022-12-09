@@ -1,14 +1,17 @@
 package com.example.a3track.viewModel
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.a3track.MyApplication
+import com.example.a3track.R
 import com.example.a3track.model.LoginResult
 import com.example.a3track.model.LoginRequest
 import com.example.a3track.repository.TrackerRepository
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
 class LoginViewModelFactory(
@@ -22,6 +25,7 @@ class LoginViewModelFactory(
 class LoginViewModel(val repository: TrackerRepository) : ViewModel() {
 
     var loginResult: MutableLiveData<LoginResult> = MutableLiveData()
+
 
     fun login(request: LoginRequest) {
         viewModelScope.launch {

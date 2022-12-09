@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/activities"
+        android:icon="@drawable/activities"
+        android:title="@string/activities" />
+    <item
+        android:id="@+id/tasks"
+        android:icon="@drawable/tasks"
+        android:title="@string/Tasks" />
+    <item
+        android:id="@+id/myGroups"
+        android:icon="@drawable/group"
+        android:title="@string/my_groups" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings"
+        android:title="@string/settings" />
+</menu>

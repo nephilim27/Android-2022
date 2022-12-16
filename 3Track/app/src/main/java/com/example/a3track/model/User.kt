@@ -9,9 +9,7 @@ data class User(
     var first_name: String,
     var email: String,
     var type: Int,
-//    @Nullable
-//    var location: String,
-//    @Nullable
-//    var phone_number: String,
+    var location: String,
+    var phone_number: String,
     var department_id: Int
 )

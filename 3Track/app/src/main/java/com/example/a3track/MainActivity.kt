@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         val deadline = prefs.getLong("deadline", 0L)
 
 
-        Log.i("xxx", "token: " + token)
+        Log.i("token", "token: " + token)
         // @TODO - check the deadline validity
         var isValid = false
         if(deadline != 0L) {

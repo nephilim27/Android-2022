@@ -1,9 +1,9 @@
 package com.example.a3track.api
 
-import android.widget.TextView
 import com.example.a3track.Util.Constants
 import com.example.a3track.model.LoginRequest
 import com.example.a3track.model.LoginResponse
+import com.example.a3track.model.Task
 import com.example.a3track.model.User
 import retrofit2.Response
 import retrofit2.http.Body
@@ -17,5 +17,14 @@ interface TrackerApi {
 
     @GET(Constants.GET_USERS_URL)
     suspend fun getUsers(@Header("token") token: String): Response<List<User>>
+
+    @GET(Constants.GET_TASKS_URL)
+    suspend fun getTasks(@Header("token") token: String): Response<List<Task>>
+
+    companion object {
+        fun getApi(): TrackerApi? {
+            return ApiClient.client?.create(TrackerApi::class.java)
+        }
+    }
 
 }

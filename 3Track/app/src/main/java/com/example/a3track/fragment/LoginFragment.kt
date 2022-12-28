@@ -31,7 +31,7 @@ class LoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = LoginViewModelFactory(TrackerRepository())
-        loginViewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
         (activity as AppCompatActivity?)!!.findViewById<BottomNavigationView>(R.id.bottomNavigationView).visibility = View.GONE
     }
 

@@ -1,33 +1,33 @@
 package com.example.a3track.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.a3track.R
+import com.example.a3track.model.*
+import com.example.a3track.repository.TrackerRepository
+import com.example.a3track.viewModel.TaskViewModel
+import com.example.a3track.viewModel.TaskViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class MyTasksFragment : Fragment(), DataAdapter.OnItemClickListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyTasksFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MyTasksFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var list: List<Task> = mutableListOf()
+    lateinit var adapter: DataAdapter
+    lateinit var taskViewModel: TaskViewModel
+    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        val factory = TaskViewModelFactory(TrackerRepository())
+        taskViewModel = ViewModelProvider(this, factory)[TaskViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -38,23 +38,30 @@ class MyTasksFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_my_tasks, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyTasksFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyTasksFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        taskViewModel.taskList.observe(viewLifecycleOwner) {
+             list = taskViewModel.taskList.value!!
+            Log.d("taskList", list.toString())
+
+            adapter = DataAdapter(list, this)
+            recyclerView.adapter = adapter
+        }
+
+        taskViewModel.readTasks()
+        recyclerView = view.findViewById(R.id.tasksList)
+
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        recyclerView.setHasFixedSize(true)
     }
+
+    override fun onItemClick(position: Int) {
+        val clickedItem: Task = list[position]
+        clickedItem.title = "Clicked"
+        adapter.notifyItemChanged(position)
+    }
+
 }

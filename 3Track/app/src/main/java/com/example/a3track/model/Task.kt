@@ -11,7 +11,7 @@ data class Task (
     var assigner: Int,
     var assignee: Int,
     var priority: Int,
-    var deadline: Int,
+    var deadline: Long,
     var departmentID: Int,
     var status: Int,
     var percentage: Int)

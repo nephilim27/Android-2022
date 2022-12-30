@@ -15,7 +15,11 @@ import com.example.a3track.api.RetrofitInstance
 import com.example.a3track.databinding.FragmentProfileBinding
 
 import com.example.a3track.model.User
+import com.example.a3track.repository.TrackerRepository
+import com.example.a3track.viewModel.MyUserViewModel
+import com.example.a3track.viewModel.MyUserViewModelFactory
 import com.example.a3track.viewModel.ProfileViewModel
+import com.example.a3track.viewModel.TaskViewModelFactory
 
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding
@@ -25,12 +29,11 @@ class ProfileFragment : Fragment() {
     lateinit var location: TextView
     lateinit var edit: ImageView
     lateinit var viewModel: ProfileViewModel
+    lateinit var userViewModel: MyUserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
 
-        }
     }
 
     override fun onCreateView(
@@ -38,6 +41,9 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         viewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
+
+        val factory = MyUserViewModelFactory(TrackerRepository())
+        userViewModel = ViewModelProvider(this, factory)[MyUserViewModel::class.java]
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -49,6 +55,11 @@ class ProfileFragment : Fragment() {
         registerListeners()
         setData()
 
+
+        //userViewModel.readUser()
+        //email.text = userViewModel.user.email
+        //phone.text = userViewModel.user.phone_number
+        //location.text = userViewModel.user.location
     }
 
     private fun setData(){

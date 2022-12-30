@@ -22,7 +22,7 @@ class LoginViewModelFactory(
     }
 }
 
-class LoginViewModel(val repository: TrackerRepository) : ViewModel() {
+class LoginViewModel(private val repository: TrackerRepository) : ViewModel() {
 
     var loginResult: MutableLiveData<LoginResult> = MutableLiveData()
 

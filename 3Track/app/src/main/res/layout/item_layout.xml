@@ -94,7 +94,7 @@
         app:layout_constraintVertical_bias="0.538" />
 
     <ImageView
-        android:id="@+id/moreImg"
+        android:id="@+id/taskDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"

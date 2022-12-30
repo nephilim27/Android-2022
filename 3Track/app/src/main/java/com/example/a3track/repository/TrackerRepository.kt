@@ -6,6 +6,7 @@ import com.example.a3track.api.TrackerApi
 import com.example.a3track.model.LoginRequest
 import com.example.a3track.model.LoginResponse
 import com.example.a3track.model.Task
+import com.example.a3track.model.User
 import retrofit2.Response
 
 class TrackerRepository {
@@ -15,6 +16,14 @@ class TrackerRepository {
 
     suspend fun getTasks(token: String): Response<List<Task>>? {
         return  TrackerApi.getApi()?.getTasks(token)
+    }
+
+    suspend fun getUsers(token: String): Response<List<User>>? {
+        return TrackerApi.getApi()?.getUsers(token)
+    }
+
+    suspend fun getMyUser(token: String): Response<User>? {
+        return TrackerApi.getApi()?.getMyUser(token)
     }
 
 }

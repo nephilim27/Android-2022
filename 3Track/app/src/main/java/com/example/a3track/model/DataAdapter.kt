@@ -1,13 +1,17 @@
 package com.example.a3track.model
 
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a3track.R
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class DataAdapter(
     private val list: List<Task>,
@@ -66,6 +70,7 @@ class DataAdapter(
     }
 
     // 3. Called many times, when we scroll the list
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         ++bindCounter;
         Log.i("Tasks", "onBindViewHolder ${bindCounter}")

@@ -6,38 +6,35 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.a3track.MyApplication
-import com.example.a3track.model.LoginResult
-import com.example.a3track.model.Task
+import com.example.a3track.model.User
 import com.example.a3track.repository.TrackerRepository
 import kotlinx.coroutines.launch
 
-class TaskViewModelFactory(
+class MyUserViewModelFactory(
     private val repository: TrackerRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return TaskViewModel( repository) as T
+        return MyUserViewModel( repository) as T
     }
 }
 
-class TaskViewModel(private val repository: TrackerRepository): ViewModel() {
+class MyUserViewModel(private val repository: TrackerRepository): ViewModel() {
 
-    var taskList = MutableLiveData<List<Task>>()
-    var taskResult: MutableLiveData<LoginResult> = MutableLiveData()
+    lateinit var user: User
 
-    fun readTasks() {
+    fun readUser() {
         viewModelScope.launch {
             try {
-                val response = repository.getTasks(MyApplication.token)
+                val response = repository.getMyUser(MyApplication.token)
                 if (response != null) {
                     if(response.isSuccessful) {
-                        taskList.postValue(response.body())
-                        taskResult.value = LoginResult.SUCCESS
+                        user = response.body()!!
                     } else{
                         Log.i("xxx-uvm", response.message())
                     }
                 }
             } catch (e: Exception) {
-                Log.i("task", e.toString())
+                Log.i("xxx", e.toString())
             }
         }
     }

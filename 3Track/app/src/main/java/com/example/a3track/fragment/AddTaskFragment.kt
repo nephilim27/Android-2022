@@ -1,6 +1,7 @@
 package com.example.a3track.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -74,9 +75,8 @@ class AddTaskFragment : Fragment() {
 
     private fun registerListeners(){
         add.setOnClickListener {
-            taskViewModel.taskList.postValue(
-                listOf(
-                    Task(ID = 1,
+
+                val task = Task(ID = 1,
                         title = title.text.toString(),
                         description = description.text.toString(),
                         time = time.text.toString().toInt(),
@@ -87,8 +87,11 @@ class AddTaskFragment : Fragment() {
                         departmentID = department.text.toString().toInt(),
                         status = status.text.toString().toInt(),
                         percentage = percentage.text.toString().toInt())
-                )
-            )
+
+
+            taskViewModel.addTasks(task)
+            taskViewModel.taskList.postValue(listOf(task))
+            Log.d("tasks", taskViewModel.taskList.toString())
 
             title.text.clear()
             description.text.clear()

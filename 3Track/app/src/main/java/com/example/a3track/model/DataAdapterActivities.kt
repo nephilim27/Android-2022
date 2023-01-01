@@ -1,22 +1,17 @@
 package com.example.a3track.model
 
-import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.RequiresApi
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a3track.R
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
-class DataAdapter(
-    private val list: List<Task>,
+class DataAdapterActivities(
+    private val list: List<Activity>,
     private val listener: OnItemClickListener,
-):  RecyclerView.Adapter<DataAdapter.DataViewHolder>(){
+):  RecyclerView.Adapter<DataAdapterActivities.DataViewHolder>(){
 
     interface OnItemClickListener{
         fun onItemClick(position: Int)
@@ -32,16 +27,11 @@ class DataAdapter(
     inner class DataViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
-        val project: TextView = itemView.findViewById(R.id.project)
-        val title: TextView = itemView.findViewById(R.id.taskTitle)
-        val assigner: TextView = itemView.findViewById(R.id.asigner)
-        val time: TextView = itemView.findViewById(R.id.time)
-        val assignee: TextView = itemView.findViewById(R.id.assigneeWho)
-        val deadline: TextView = itemView.findViewById(R.id.deadlineWhen)
-        val priority: TextView = itemView.findViewById(R.id.prio)
-        val description: TextView = itemView.findViewById(R.id.description)
-        val status: TextView = itemView.findViewById(R.id.tag)
-        val percentage: TextView = itemView.findViewById(R.id.progressPercentage)
+        val type: TextView = itemView.findViewById(R.id.ActivityType)
+        val user: TextView = itemView.findViewById(R.id.User)
+        val subType: TextView = itemView.findViewById(R.id.SubType)
+        val time: TextView = itemView.findViewById(R.id.Time)
+        val note: TextView = itemView.findViewById(R.id.Note)
 
         // Constructor
         init{
@@ -63,28 +53,21 @@ class DataAdapter(
         ++createCounter
         Log.i("XXX", "onCreateViewHolder $createCounter")
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.activity_layout, parent, false)
         return DataViewHolder(itemView)
-
-
     }
 
     // 3. Called many times, when we scroll the list
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         ++bindCounter;
-        Log.i("Tasks", "onBindViewHolder $bindCounter")
+        Log.i("Activities", "onBindViewHolder $bindCounter")
         // val currentItem = list.value!![position]
         val currentItem = list[position]
-        holder.title.text = currentItem.title
-        holder.assigner.text = currentItem.assigner.toString()
-        holder.time.text = currentItem.time.toString()
-        holder.assignee.text = currentItem.assignee.toString()
-        holder.deadline.text = currentItem.deadline.toString()
-        holder.priority.text = currentItem.priority.toString()
-        holder.description.text = currentItem.description
-        holder.status.text = currentItem.status.toString()
-        holder.percentage.text = currentItem.percentage.toString()
-
+        holder.type.text = currentItem.Type.toString()
+        holder.user.text = currentItem.User.toString()
+        holder.subType.text = currentItem.SubType.toString()
+        holder.time.text = currentItem.Time.toString()
+        holder.note.text = currentItem.Note
     }
 
     // 4.
@@ -97,6 +80,5 @@ class DataAdapter(
         var createCounter: Int = 0
         var bindCounter: Int = 0
     }
+
 }
-
-

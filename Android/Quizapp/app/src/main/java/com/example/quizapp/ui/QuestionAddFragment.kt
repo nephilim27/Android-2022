@@ -15,7 +15,7 @@ import com.example.quizapp.models.QuizViewModel
 import kotlin.properties.Delegates
 
 
-class QuestionAddFragment : Fragment() {
+class QuestionAddFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var binding: FragmentQuestionAddBinding
     private lateinit var placeHolder: EditText
@@ -27,19 +27,16 @@ class QuestionAddFragment : Fragment() {
     private lateinit var addButton: Button
     private lateinit var viewModel: QuizViewModel
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        arguments?.let {
-//
-//        }
-//    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.apply {
             initViewItems()
             registerListeners(view)
-        }
+
     }
 
     override fun onCreateView(

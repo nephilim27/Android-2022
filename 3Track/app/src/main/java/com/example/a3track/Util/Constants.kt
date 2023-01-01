@@ -6,4 +6,6 @@ object Constants {
     const val GET_USERS_URL ="/users"
     const val GET_TASKS_URL = "/task/getTasks"
     const val GET_MYUSER_URL = "tracker-3track.a2hosted.com/user"
+    const val CREATE_TASK = "/task/create"
+    const val GET_ACTIVITIES_URL = "/activity/getActivities"
 }

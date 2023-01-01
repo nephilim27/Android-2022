@@ -41,4 +41,22 @@ class TaskViewModel(private val repository: TrackerRepository): ViewModel() {
             }
         }
     }
+
+    fun addTasks(task: Task) {
+        viewModelScope.launch {
+            try {
+                val response = repository.createTask(task)
+                if (response != null) {
+                    if(response.isSuccessful) {
+                        taskList.postValue(response.body())
+                        taskResult.value = LoginResult.SUCCESS
+                    } else{
+                        Log.i("xxx-uvm", response.message())
+                    }
+                }
+            } catch (e: Exception) {
+                Log.i("task", e.toString())
+            }
+        }
+    }
 }

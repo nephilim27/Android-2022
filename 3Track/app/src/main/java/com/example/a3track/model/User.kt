@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class User(
-    var ID: Long,
+    var ID: Int,
     var last_name: String,
     var first_name: String,
     var email: String,

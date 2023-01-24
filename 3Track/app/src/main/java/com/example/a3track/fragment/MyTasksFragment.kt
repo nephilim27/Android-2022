@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +20,7 @@ import com.example.a3track.databinding.FragmentMyTasksBinding
 import com.example.a3track.databinding.FragmentProfileBinding
 import com.example.a3track.model.*
 import com.example.a3track.repository.TrackerRepository
+import com.example.a3track.viewModel.GlobalViewModel
 import com.example.a3track.viewModel.TaskViewModel
 import com.example.a3track.viewModel.TaskViewModelFactory
 
@@ -31,6 +33,7 @@ class MyTasksFragment : Fragment(), DataAdapter.OnItemClickListener {
     lateinit var binding: FragmentMyTasksBinding
     lateinit var add: ImageView
     private var details: ImageView? = view?.findViewById(R.id.taskDetails)
+    private val globalViewModel: GlobalViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +48,9 @@ class MyTasksFragment : Fragment(), DataAdapter.OnItemClickListener {
         val factory = TaskViewModelFactory(TrackerRepository())
         taskViewModel = ViewModelProvider(this, factory)[TaskViewModel::class.java]
         binding = FragmentMyTasksBinding.inflate(inflater, container, false)
+
+        globalViewModel.LoadTasks()
+        
         return binding.root
     }
 

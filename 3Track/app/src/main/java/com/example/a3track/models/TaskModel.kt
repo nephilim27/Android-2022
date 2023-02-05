@@ -1,13 +1,15 @@
 package com.example.a3track.models
 
+import com.example.a3track.model.Department
+
 data class TaskModel(var ID: Int,
                      var title: String,
                      var description: String,
-                     var time: Int,
-                     var assigner: UserModel,
-                     var assignee: UserModel,
+                     var created_time: Long,
+                     var created_by_user_ID: UserModel?,
+                     var assigned_to_user_ID: UserModel?,
                      var priority: Int,
                      var deadline: Long,
-                     var departmentID: Int,
+                     var departmentID: DepartmentModel?,
                      var status: Int,
-                     var percentage: Int)
+                     var percentage: Int?)

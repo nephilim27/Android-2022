@@ -35,6 +35,7 @@ class LoginViewModel(private val repository: TrackerRepository) : ViewModel() {
 
                     MyApplication.token = response.body()!!.token
                     MyApplication.deadline = response.body()!!.deadline
+                    MyApplication.id = response.body()!!.userId
 
                     loginResult.value = LoginResult.SUCCESS
                     Log.i("xxx", response.body().toString())

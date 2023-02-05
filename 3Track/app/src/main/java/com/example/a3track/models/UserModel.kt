@@ -5,6 +5,7 @@ data class UserModel(var ID:Int,
                      var first_name: String,
                      var email: String,
                      var type: Int,
-                     var location: String,
-                     var phone_number: String,
-                     var department_id: Int)
+                     var location: String?,
+                     var phone_number: String?,
+                     var department_id: Int,
+                     var image: String?)

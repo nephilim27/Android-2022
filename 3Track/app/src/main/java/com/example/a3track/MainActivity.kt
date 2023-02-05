@@ -2,15 +2,10 @@ package com.example.a3track
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.example.a3track.databinding.ActivityMainBinding
 import com.example.a3track.fragment.*
-import com.example.a3track.model.LoginResult
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MyActivity"

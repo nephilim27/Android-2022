@@ -11,8 +11,8 @@ class TrackerRepository {
         return RetrofitInstance.api.login(request)
     }
 
-    suspend fun createTask(task: Task): Response <List<Task>>? {
-        return TrackerApi.getApi()?.createTask(task)
+    suspend fun createTask(token: String, task: CreateTask): Response <GeneralResponse>? {
+        return TrackerApi.getApi()?.createTask(token, task)
     }
 
     suspend fun getTasks(token: String): Response<List<Task>>? {
@@ -31,4 +31,11 @@ class TrackerRepository {
         return  TrackerApi.getApi()?.getActivities(token)
     }
 
+    suspend fun getDepartments(token: String): Response<List<Department>> {
+        return TrackerApi.getApi()?.getDepartments(token)!!
+    }
+
+    suspend fun updateProfile(token: String, user: UpdateProfile): Response<GeneralResponse>? {
+        return TrackerApi.getApi()?.updateProfile(token, user)
+    }
 }

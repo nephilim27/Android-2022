@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.a3track.MyApplication
 import com.example.a3track.Util.RequestState
+import com.example.a3track.model.CreateTask
 import com.example.a3track.model.LoginResult
 import com.example.a3track.model.Task
 import com.example.a3track.repository.TrackerRepository
@@ -21,10 +22,9 @@ class TaskViewModelFactory(
 }
 
 class TaskViewModel(private val repository: TrackerRepository): ViewModel() {
-
-    var taskList = MutableLiveData<List<Task>>()
+    val taskList : MutableLiveData<List<Task>> = MutableLiveData()
     val getTasksState: MutableLiveData<RequestState> = MutableLiveData()
-
+    val createTaskState: MutableLiveData<RequestState> = MutableLiveData()
 
     fun readTasks() {
         getTasksState.value = RequestState.LOADING
@@ -34,8 +34,14 @@ class TaskViewModel(private val repository: TrackerRepository): ViewModel() {
                 if (response != null) {
                     if(response.isSuccessful) {
                         Log.d("responseBody", response.body().toString())
-                        taskList.postValue(response.body())
+                        taskList.value = listOf()
+                        val taskListResponse = response.body()!!
+                        for (task in taskListResponse) {
+                            Log.d("task", task.toString())
+                            taskList.value = taskList.value?.plus(task)
+                        }
                         getTasksState.value = RequestState.SUCCESS
+                        Log.d("TaskViewModel", "getTasks: ${taskList.value}")
                     } else{
                         Log.i("xxx-uvm", response.message())
                         getTasksState.value = RequestState.UNKNOWN_ERROR
@@ -49,19 +55,23 @@ class TaskViewModel(private val repository: TrackerRepository): ViewModel() {
         }
     }
 
-    fun addTasks(task: Task) {
+    fun addTasks(createTask: CreateTask) {
+        createTaskState.value = RequestState.LOADING
         viewModelScope.launch {
             try {
-                val response = repository.createTask(task)
+                val response = repository.createTask(MyApplication.token, createTask)
                 if (response != null) {
                     if(response.isSuccessful) {
-                        taskList.postValue(response.body())
+                        createTaskState.value = RequestState.SUCCESS
+                        Log.d("TaskViewModel", "createTask: ${response.body()}")
                     } else{
                         Log.i("xxx-uvm", response.message())
+                        createTaskState.value = RequestState.UNKNOWN_ERROR
                     }
                 }
             } catch (e: Exception) {
                 Log.i("task", e.toString())
+                createTaskState.value = RequestState.UNKNOWN_ERROR
             }
         }
     }

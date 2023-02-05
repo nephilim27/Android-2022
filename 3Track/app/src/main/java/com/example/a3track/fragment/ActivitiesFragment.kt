@@ -1,36 +1,36 @@
 package com.example.a3track.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a3track.R
+import com.example.a3track.Util.RequestState
 import com.example.a3track.databinding.FragmentActivitiesBinding
-import com.example.a3track.databinding.FragmentMyTasksBinding
-import com.example.a3track.model.Activity
-import com.example.a3track.model.DataAdapter
 import com.example.a3track.model.DataAdapterActivities
-import com.example.a3track.model.Task
+import com.example.a3track.models.ActivityModel
+import com.example.a3track.models.DepartmentModel
+import com.example.a3track.models.TaskModel
 import com.example.a3track.repository.TrackerRepository
 import com.example.a3track.viewModel.ActivityViewModel
 import com.example.a3track.viewModel.ActivityViewModelFactory
-import com.example.a3track.viewModel.TaskViewModel
-import com.example.a3track.viewModel.TaskViewModelFactory
+import com.example.a3track.viewModel.GlobalViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ActivitiesFragment : Fragment(), DataAdapterActivities.OnItemClickListener {
 
-    private var list: List<Activity> = mutableListOf()
-    lateinit var adapter: DataAdapterActivities
+    private var list: List<ActivityModel> = mutableListOf()
+    lateinit var dataAdapter: DataAdapterActivities
     private lateinit var activityViewModel: ActivityViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: FragmentActivitiesBinding
+    private val globalViewModel: GlobalViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,17 +53,22 @@ class ActivitiesFragment : Fragment(), DataAdapterActivities.OnItemClickListener
 
         initViewItems()
 
-        activityViewModel.activityList.observe(viewLifecycleOwner){
-            list = activityViewModel.activityList.value!!
-            Log.d("activities", list.toString())
-
-            adapter = DataAdapterActivities(list, this)
-            recyclerView.adapter = adapter
+        dataAdapter = DataAdapterActivities(ArrayList(), this)
+        recyclerView.apply {
+            adapter = dataAdapter
+            layoutManager = LinearLayoutManager(context)
         }
-        activityViewModel.readActivities()
-
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.setHasFixedSize(true)
+
+        globalViewModel.loadActivities()
+        globalViewModel.requestState.observe(viewLifecycleOwner) {
+            if (it == RequestState.SUCCESS) {
+                list = globalViewModel.getActivityList().value!!
+                dataAdapter.setDate(globalViewModel.getActivityList().value!! as MutableList<ActivityModel>,
+                    globalViewModel.getDepartmentList().value!! as MutableList<DepartmentModel>,
+                    globalViewModel.getTaskList().value!! as MutableList<TaskModel>)
+            }
+        }
     }
 
     private fun initViewItems(){
@@ -71,9 +76,9 @@ class ActivitiesFragment : Fragment(), DataAdapterActivities.OnItemClickListener
     }
 
     override fun onItemClick(position: Int) {
-        val clickedItem: Activity = list[position]
-        clickedItem.Note = "Clicked"
-        adapter.notifyItemChanged(position)
+        val clickedItem: ActivityModel = list[position]
+        clickedItem.note = "Clicked"
+        dataAdapter.notifyItemChanged(position)
     }
 
 }

@@ -7,5 +7,6 @@ class MyApplication : Application() {
         var token: String = ""
         var deadline: Long = 0L
         var email: String = ""
+        var id : Int? = null
     }
 }

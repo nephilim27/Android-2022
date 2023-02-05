@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.a3track.MyApplication
 import com.example.a3track.R
 import com.example.a3track.databinding.FragmentSettingsBinding
 
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
-    private lateinit var viewProfile: TextView
+    private lateinit var viewProfile: Button
+    private lateinit var signOutButton: Button
 
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,12 +43,20 @@ class SettingsFragment : Fragment() {
 
     private fun initViewItems(view: View){
         viewProfile = binding.viewProfile
-
+        signOutButton = binding.signoutButton
     }
 
     private fun registerListeners(){
         viewProfile.setOnClickListener {
             replaceFragment(ProfileFragment())
+        }
+
+        signOutButton.setOnClickListener {
+            MyApplication.token = ""
+            MyApplication.deadline = 0L
+            MyApplication.email = ""
+            MyApplication.id = null
+            replaceFragment(LoginFragment())
         }
     }
 

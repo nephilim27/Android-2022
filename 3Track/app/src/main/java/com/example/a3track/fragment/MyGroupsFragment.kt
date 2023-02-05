@@ -5,56 +5,64 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.a3track.R
+import com.example.a3track.Util.RequestState
+import com.example.a3track.databinding.FragmentMyGroupsBinding
+import com.example.a3track.model.DataAdapterGroups
+import com.example.a3track.models.DepartmentModel
+import com.example.a3track.viewModel.GlobalViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyGroupsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MyGroupsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class MyGroupsFragment : Fragment(), DataAdapterGroups.OnItemClickListener {
+    private val globalViewModel: GlobalViewModel by viewModels()
+    lateinit var dataAdapter: DataAdapterGroups
+    private lateinit var recyclerView: RecyclerView
+    lateinit var binding: FragmentMyGroupsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_groups, container, false)
+    ): View {
+        binding = FragmentMyGroupsBinding.inflate(inflater, container, false)
+
+        recyclerView = binding.groupList
+        dataAdapter = DataAdapterGroups(ArrayList(), this)
+        recyclerView.apply {
+            adapter = dataAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
+        recyclerView.setHasFixedSize(true)
+
+        globalViewModel.readDepartments()
+        globalViewModel.requestState.observe(viewLifecycleOwner) {
+            if (it == RequestState.SUCCESS) {
+                dataAdapter.setDate(globalViewModel.getDepartmentList().value!! as MutableList<DepartmentModel>)
+            }
+        }
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyGroupsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyGroupsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
+    }
+
+    override fun onItemClick(position: Int) {
+        val bundle = Bundle()
+        val depId = globalViewModel.getDepartmentList().value!![position].ID
+        bundle.putInt("departmentID", depId)
+        val fragment = GroupMembersFragment()
+        fragment.arguments = bundle
+        replaceFragment(fragment)
     }
 }

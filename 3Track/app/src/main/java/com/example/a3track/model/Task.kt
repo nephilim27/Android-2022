@@ -7,14 +7,14 @@ data class Task (
     var ID: Int,
     var title: String,
     var description: String,
-    var time: Int,
-    var assigner: Int,
-    var assignee: Int,
+    var created_time: Long,
+    var created_by_user_ID: Int,
+    var asigned_to_user_ID: Int,
     var priority: Int,
     var deadline: Long,
-    var departmentID: Int,
+    var department_ID: Int,
     var status: Int,
-    var percentage: Int)
+    var percentage: Int?)
 
 
 //val taskList: MutableList<Task> = mutableListOf(

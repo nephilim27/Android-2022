@@ -13,7 +13,7 @@ interface TrackerApi {
     suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
 
     @POST(Constants.CREATE_TASK)
-    suspend fun createTask(@Body task: Task): Response<List<Task>>
+    suspend fun createTask(@Header("token") token:String, @Body task: CreateTask): Response<GeneralResponse>
 
     @GET(Constants.GET_USERS_URL)
     suspend fun getUsers(@Header("token") token: String): Response<List<User>>
@@ -26,6 +26,12 @@ interface TrackerApi {
 
     @GET(Constants.GET_ACTIVITIES_URL)
     suspend fun getActivities(@Header("token") token: String): Response<List<Activity>>
+
+    @GET(Constants.GET_DEPARTMENTS_URL)
+    suspend fun getDepartments(@Header("token") token: String): Response<List<Department>>
+
+    @POST(Constants.UPDATE_PROFILE)
+    suspend fun updateProfile(@Header("token") token: String, @Body user: UpdateProfile): Response<GeneralResponse>
 
     companion object {
         fun getApi(): TrackerApi? {

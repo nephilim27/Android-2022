@@ -12,7 +12,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.a3track.MyApplication
 import com.example.a3track.R
 import com.example.a3track.model.LoginRequest
@@ -39,7 +38,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 

@@ -1,2 +1,2 @@
 # Android-2022
-An android application I've made for university
+An android application I've bilt for university
